@@ -21,18 +21,23 @@ export default {
     name: 'mapwidget',
     props: {
         apikey: '',
-        locationsrc: ''
+        locationsrc: '',
+        allowCategories: [],
+        allowLocations: [],
+        perPage: 3,
+        categoryStyle: 'list',
+        detailsPlacement: 'bottom',
+        fullwidth: true
     },
     data: function() {
         return {
             gmapLib: {},
-            gmap: {}
+            gmap: {},
+            locations: []
         }
     },
     methods: {
-        loadLocations: function(){
-            // Grab a list of locations from a provided data source
-        }
+
     },
     mounted: function() {
         let mapper = this;
@@ -47,7 +52,8 @@ export default {
     watch: {
         gmapLib: function() {
             let mapper = this;
-            console.dir(mapper.gmapLib);
+            this.$emit('apiload', mapper.gmapLib);
+            
             mapper.gmap = new mapper.gmapLib.Map(document.getElementById('map'), {
                 center: {
                     lat: -34.397,
@@ -56,6 +62,7 @@ export default {
                 scrollwheel: false,
                 zoom: 8
             });
+            this.$emit('mapload', mapper.gmap);
         }
     }
 }
