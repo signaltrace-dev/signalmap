@@ -2,6 +2,17 @@
 
 > A configurable map widget
 
+## TODO
+Add options / functionality for:
+* PerPage
+* Categories
+* Category style (dropdown vs. list)
+* Limit categories
+* Limit locations
+* Details pane alignment / visibility
+* Custom markers
+* Custom map style
+
 ## Build Setup
 
 ``` bash
